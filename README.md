@@ -192,11 +192,19 @@ venv\\Scripts\\activate
 
 
 
-4\. Install dependencies
+4\. Install application dependencies
 
 
 
 pip install -r requirements.txt
+
+
+
+5\. Install development and testing dependencies
+
+
+
+pip install -r requirements-dev.txt
 
 
 
@@ -217,6 +225,50 @@ Open the application in your browser:
 
 
 http://127.0.0.1:8014/
+
+
+
+API documentation is available at:
+
+
+
+http://127.0.0.1:8014/docs
+
+
+
+Running Automated Tests
+
+
+
+Run the test suite from the project root directory:
+
+
+
+python -m pytest -v
+
+
+
+The tests cover:
+
+
+
+\- Empty transaction validation.
+
+\- Missing required fields.
+
+\- Invalid transaction data.
+
+\- Legitimate transaction classification.
+
+\- Fraudulent transaction classification.
+
+
+
+The prediction tests use mocked model outputs to test
+
+&#x20;API behaviour without requiring access to real
+
+&#x20;transaction records.
 
 
 
