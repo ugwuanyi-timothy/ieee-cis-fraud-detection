@@ -2,35 +2,57 @@ IEEE-CIS Fraud Detection System
 
 
 
+An end-to-end machine learning application for detecting potentially
+
+&#x20;
+
+fraudulent financial transactions using XGBoost, FastAPI, and a 
+
+
+
+web-based frontend.
+
+
+
 Project Overview
 
 
 
-An end-to-end machine learning application that predicts whether a financial transaction is fraudulent or legitimate.
+This project uses a trained XGBoost classifier to estimate the probability
 
 
 
-The system uses a trained XGBoost classifier and a FastAPI backend, with a web-based frontend that allows users to submit transaction data and view prediction results.
+&#x20;that a financial transaction is fraudulent.
 
 
 
-Key Features
+The application provides a web interface where users can submit transaction
 
 
 
-\- Fraud detection using XGBoost.
+&#x20;data and receive a prediction, fraud probability, and transaction classification.
+
+
+
+Application Features
+
+
+
+\- Fraud detection using a trained XGBoost model.
 
 \- Transaction preprocessing and feature engineering.
 
-\- Frequency encoding and aggregation mappings.
+\- Frequency encoding and aggregation-based features.
 
-\- REST API built with FastAPI.
+\- REST API developed with FastAPI.
 
 \- Interactive web frontend.
 
 \- Fraud probability estimation.
 
-\- Legitimate and fraudulent transaction classification.
+\- Fraudulent and legitimate transaction classification.
+
+\- Input validation and error handling.
 
 
 
@@ -52,6 +74,8 @@ Technologies Used
 
 \- Uvicorn
 
+\- Joblib
+
 \- HTML
 
 \- CSS
@@ -64,7 +88,87 @@ Project Structure
 
 
 
-The project contains the trained model, preprocessing resources, API application, frontend, and dependency configuration.
+ieee-cis-fraud-detection/
+
+│
+
+├── frontend/
+
+│ └── index.html
+
+│
+
+├── tests/
+
+│ └── test\_api.py
+
+│
+
+├── main.py
+
+├── preprocessing.py
+
+├── requirements.txt
+
+├── README.md
+
+│
+
+├── xgb\_model.pkl
+
+├── freq\_maps.pkl
+
+├── agg\_maps.pkl
+
+├── encoders.pkl
+
+├── feature\_colum.pkl
+
+└── feature\_dtype.pkl
+
+
+
+Installation and Setup
+
+
+
+1\. Clone the repository
+
+
+
+git clone https://github.com/ugwuanyi-timothy/ieee-cis-fraud-detection.git
+
+
+
+2\. Navigate into the project directory
+
+
+
+cd ieee-cis-fraud-detection
+
+
+
+3\. Create and activate a virtual environment
+
+
+
+python -m venv venv
+
+
+
+Windows:
+
+
+
+venv\\Scripts\\activate
+
+
+
+4\. Install dependencies
+
+
+
+pip install -r requirements.txt
 
 
 
@@ -72,35 +176,19 @@ Running the Application
 
 
 
-1\. Clone the repository.
+Start the FastAPI server:
 
 
 
-2\. Install the dependencies:
-
-&#x20;  
-
-&#x20;  pip install -r requirements.txt
+python -m uvicorn main:app --host 127.0.0.1 --port 8014
 
 
 
-3\. Start the API:
-
-&#x20;  
-
-&#x20;  python -m uvicorn main:app --host 127.0.0.1 --port 8014
+Open the application in your browser:
 
 
 
-4\. Open the application in your browser:
-
-&#x20;  
-
-&#x20;  "http://127.0.0.1:8014/"
-
-
-
-5\. Upload a transaction JSON file to receive a prediction.
+http://127.0.0.1:8014/
 
 
 
@@ -108,43 +196,59 @@ API Documentation
 
 
 
-FastAPI provides interactive API documentation at:
+Interactive API documentation is available at:
 
 
 
-"http://127.0.0.1:8014/docs"
+http://127.0.0.1:8014/docs
 
 
 
-Prediction Output
+Prediction Endpoint
 
 
 
-The application returns:
+POST "/predict"
 
 
 
-\- Fraud probability
-
-\- Prediction label
-
-\- Transaction classification
+The endpoint accepts transaction data in JSON format and returns a prediction.
 
 
 
-Example:
+Example Response
 
 
 
 {
 
-&#x20; "fraud percentage": 0.6763,
+&#x20;   "fraud\_probability": 0.6763,
 
-&#x20; "prediction": 1,
+&#x20;   "prediction": 1,
 
-&#x20; "result": "fraudulent"
+&#x20;   "result": "fraudulent"
 
 }
+
+
+
+Prediction Labels
+
+
+
+Prediction| Meaning
+
+0| Legitimate transaction
+
+1| Fraudulent transaction
+
+
+
+The fraud probability represents the model's estimated probability of fraud,
+
+
+
+&#x20;not a guarantee that a transaction is fraudulent.
 
 
 
@@ -152,7 +256,31 @@ Dataset
 
 
 
-The project is based on the IEEE-CIS Fraud Detection dataset from Kaggle.
+This project is based on the "IEEE-CIS Fraud Detection dataset" 
+
+
+
+(https://www.kaggle.com/competitions/ieee-fraud-detection) hosted on Kaggle.
+
+
+
+The original dataset is not included in this repository.
+
+
+
+Model Evaluation
+
+
+
+Model performance was evaluated during the Kaggle competition using the ROC-AUC metric.
+
+
+
+Detailed evaluation results and methodology will be documented alongside
+
+
+
+&#x20;the model evaluation materials.
 
 
 
@@ -160,5 +288,11 @@ Disclaimer
 
 
 
-This project is intended for educational and demonstration purposes. Predictions should not be treated as the sole basis for real financial decisions.
+This project is intended for educational, research, and demonstration purposes.
+
+
+
+&#x20;Predictions should not be used as the sole basis for real-world financial decisions.
+
+
 
