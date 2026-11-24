@@ -6,7 +6,7 @@ An end-to-end machine learning application for detecting potentially
 
 &#x20;
 
-fraudulent financial transactions using XGBoost, FastAPI, and a 
+fraudulent financial transactions using XGBoost, FastAPI, and a
 
 
 
@@ -53,6 +53,34 @@ Application Features
 \- Fraudulent and legitimate transaction classification.
 
 \- Input validation and error handling.
+
+
+
+Application screenshots
+
+
+
+Home page
+
+
+
+!\[Home page](screenshots/home.png)
+
+
+
+Legitimate Transaction
+
+
+
+!\[Legitimate Transaction](screenshots/legitimate-transaction.png)
+
+
+
+Fraud Transaction
+
+
+
+!\[Fraudulent Transaction](screenshots/fraudulent-transaction.png)
 
 
 
@@ -256,7 +284,7 @@ Dataset
 
 
 
-This project is based on the "IEEE-CIS Fraud Detection dataset" 
+This project is based on the "IEEE-CIS Fraud Detection dataset"
 
 
 
@@ -293,6 +321,4 @@ This project is intended for educational, research, and demonstration purposes.
 
 
 &#x20;Predictions should not be used as the sole basis for real-world financial decisions.
-
-
 
