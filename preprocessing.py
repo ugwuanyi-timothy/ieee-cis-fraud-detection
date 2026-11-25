@@ -65,36 +65,22 @@ def apply_AG(df, agg_maps):
                 #df[new_col_name] = df[new_col_name].fillna(-1)
    return df
 
-                
-#def apply_le(df, encoders):
-  #for col, encoder in encoders.items():
-    #print(f"\n{col}")
-    #print('incoming value:', repr(df[col].iloc[0]))
-    #print('incoming type:', type(df[col].iloc[0]))
-    #print('encoder classes:', encoder.classes_[:5])
-    #print("before:", df[col].iloc[0])
-    #known_values = set(encoder.classes_)
-    #df[col] = df[col].astype(str).map(lambda x: x if x in encoder.classes_ else None)
-    #df[col] = df[col].map(lambda x: encoder.transform([x])[0] if x in encoder.classes_ else -1)
-    #df[col] = df[col].astype(str).map(lambda x: encoder.transform([x])[0] if x in known_values else -1)
-    #df[col] = encoder.transform(df[col])
-    #print('after:', df[col].iloc[0])
-  #return df
-
 def apply_le(df, encoders):
     for col, encoder in encoders.items():
-
         df[col] = df[col].apply(
             lambda x: np.nan if pd.isna(x) else str(x)
         )
 
         known_values = set(encoder.classes_)
+        known_mask = df[col].isin(known_values)
 
-        df[col] = df[col].map(
-            lambda x: x if x in known_values else np.nan
+        encoded = pd.Series(np.nan, index=df.index)
+
+        encoded.loc[known_mask] = encoder.transform(
+            df.loc[known_mask, col]
         )
 
-        df[col] = encoder.transform(df[col])
+        df[col] = encoded
 
     return df
 
