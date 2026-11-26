@@ -21,7 +21,8 @@ def make_transaction():
         | {'card1', 'addr1', 'P_emaildomain'}
     )
 
-    for main_column, group_column, agg_type in main.agg_maps.keys():
+    for group_column, mapping_data in main.agg_maps.items():
+      for main_column, agg_type in mapping_data["columns"]:
         required_cols.add(main_column)
         required_cols.add(group_column)
 

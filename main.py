@@ -10,7 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent
 
 model = joblib.load(BASE_DIR/"xgb_model.pkl")
 freq_maps = joblib.load(BASE_DIR/"freq_maps.pkl")
-agg_maps = joblib.load(BASE_DIR/"agg_maps.pkl")
+agg_maps = joblib.load(BASE_DIR/"compact_agg_maps.pkl")
 l_enc = joblib.load(BASE_DIR/"encoders.pkl")
 feature_colum = joblib.load(BASE_DIR/"feature_colum.pkl")
 feature_dtype = joblib.load(BASE_DIR/"feature_dtype.pkl")
@@ -83,7 +83,8 @@ def predict(transaction: dict = Body(...)):
     if not transaction:
        raise HTTPException(status_code=400, detail="Transaction data cannot be empty.")
     required_cols = (set(freq_maps.keys())| set(l_enc.keys())| {'card1', 'addr1', 'P_emaildomain'})
-    for main_column, group_column, agg_type in agg_maps.keys():
+    for group_column, mapping_data in agg_maps.items():
+      for main_column, agg_type in mapping_data["columns"]:
          required_cols.add(main_column)
          required_cols.add(group_column)
     generated_cols = {'card1_addr1', 'card1_addr1_P_emaildomain'}

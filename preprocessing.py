@@ -53,17 +53,21 @@ def encode_AG(main_columns, uids, aggregations=['mean'], train_df=None, test_df=
                     test_df[new_col_name].fillna(-1,inplace=True)
 
 def apply_AG(df, agg_maps):
-   main_columns = ['TransactionAmt', 'D9', 'D11']
-   uids = ['card1','card1_addr1','card1_addr1_P_emaildomain']
-   aggregations = ['mean','std', 'max']
-   for main_column in main_columns:  
-        for col in uids:
-            for agg_type in aggregations:
-                new_col_name = main_column+'_'+col+'_'+agg_type
-                mapping = agg_maps[(main_column, col, agg_type)]
-                df[new_col_name] = (df[col].map(mapping).astype('float32'))
-                #df[new_col_name] = df[new_col_name].fillna(-1)
-   return df
+    for group_col, data in agg_maps.items():
+        indices = df[group_col].map(data['key_to_idx'])
+
+        valid = indices.notna().to_numpy()
+        index_values = indices.fillna(0).to_numpy(dtype=np.int64)
+
+        for j, (main_col, agg_type) in enumerate(data['columns']):
+            new_col_name = f'{main_col}_{group_col}_{agg_type}'
+
+            output = np.full(len(df), np.nan, dtype=np.float32)
+            output[valid] = data['values'][index_values[valid], j]
+
+            df[new_col_name] = output
+
+    return df
 
 def apply_le(df, encoders):
     for col, encoder in encoders.items():
