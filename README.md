@@ -1,26 +1,26 @@
-\# IEEE-CIS Fraud Detection System
+# IEEE-CIS Fraud Detection System
 
 
 
-An end-to-end machine learning application for detecting potentially fraudulent financial transactions using \*\*XGBoost\*\*, \*\*FastAPI\*\*, and a web-based frontend.
+An end-to-end machine learning application for detecting potentially fraudulent financial transactions using **XGBoost**, **FastAPI**, and a web-based frontend.
 
 
 
-\## Live Application
+## Live Application
 
 
 
-\- \*\*Live Demo:\*\* https://ieee-cis-fraud-detection-1.onrender.com
+- **Live Demo:** https://ieee-cis-fraud-detection-1.onrender.com
 
-\- \*\*GitHub Repository:\*\* https://github.com/ugwuanyi-timothy/ieee-cis-fraud-detection
-
-
-
-\---
+- **GitHub Repository:** https://github.com/ugwuanyi-timothy/ieee-cis-fraud-detection
 
 
 
-\## Project Overview
+---
+
+
+
+## Project Overview
 
 
 
@@ -36,19 +36,19 @@ The goal was not just to train a model, but to build an application that can acc
 
 
 
-The final application uses a trained \*\*XGBoost classifier\*\* to estimate the probability that a transaction is fraudulent and classify it as either potentially fraudulent or legitimate.
+The final application uses a trained **XGBoost classifier** to estimate the probability that a transaction is fraudulent and classify it as either potentially fraudulent or legitimate.
 
 
 
-\---
+---
 
 
 
-\## Application Screenshots
+## Application Screenshots
 
 
 
-\### 1. Home Page
+### 1. Home Page
 
 
 
@@ -56,7 +56,7 @@ The final application uses a trained \*\*XGBoost classifier\*\* to estimate the 
 
 
 
-\### 2. Legitimate Transaction
+### 2. Legitimate Transaction
 
 
 
@@ -64,7 +64,7 @@ The final application uses a trained \*\*XGBoost classifier\*\* to estimate the 
 
 
 
-\### 3. Fraudulent Transaction
+### 3. Fraudulent Transaction
 
 
 
@@ -72,39 +72,39 @@ The final application uses a trained \*\*XGBoost classifier\*\* to estimate the 
 
 
 
-\---
+---
 
 
 
-\## Key Features
+## Key Features
 
 
 
-\- Machine learning-based fraud detection using XGBoost.
+- Machine learning-based fraud detection using XGBoost.
 
-\- Fraud probability estimation.
+- Fraud probability estimation.
 
-\- Classification of transactions as legitimate or potentially fraudulent.
+- Classification of transactions as legitimate or potentially fraudulent.
 
-\- FastAPI backend for handling prediction requests.
+- FastAPI backend for handling prediction requests.
 
-\- Web-based frontend for submitting transaction data.
+- Web-based frontend for submitting transaction data.
 
-\- Feature engineering and categorical encoding.
+- Feature engineering and categorical encoding.
 
-\- Optimized aggregation mappings for deployment.
+- Optimized aggregation mappings for deployment.
 
-\- CPU-only XGBoost deployment to reduce unnecessary memory requirements.
+- CPU-only XGBoost deployment to reduce unnecessary memory requirements.
 
-\- Automated API testing using pytest.
-
-
-
-\---
+- Automated API testing using pytest.
 
 
 
-\## Model Performance
+---
+
+
+
+## Model Performance
 
 
 
@@ -128,11 +128,11 @@ The private leaderboard score provides an indication of how the model performed 
 
 
 
-\---
+---
 
 
 
-\## Feature Engineering and Preprocessing
+## Feature Engineering and Preprocessing
 
 
 
@@ -144,23 +144,23 @@ The preprocessing pipeline includes:
 
 
 
-\- Frequency encoding of selected categorical features.
+- Frequency encoding of selected categorical features.
 
-\- Aggregation features based on transaction-related identifiers.
+- Aggregation features based on transaction-related identifiers.
 
-\- Combination features involving card, address, and email information.
+- Combination features involving card, address, and email information.
 
-\- Label encoding of categorical variables.
+- Label encoding of categorical variables.
 
-\- Alignment of processed data with the model's expected feature columns.
-
-
-
-The final model expects \*\*357 input features\*\*.
+- Alignment of processed data with the model's expected feature columns.
 
 
 
-\### Aggregation Map Optimization
+The final model expects **357 input features**.
+
+
+
+### Aggregation Map Optimization
 
 
 
@@ -182,7 +182,7 @@ The original aggregation mappings were converted into a compact representation w
 
 
 
-This reduced the serialized aggregation artifact by approximately \*\*92.8%\*\*.
+This reduced the serialized aggregation artifact by approximately **92.8%**.
 
 
 
@@ -190,7 +190,7 @@ The compact mappings were compared against the original mappings to verify that 
 
 
 
-\### Deployment Optimization
+### Deployment Optimization
 
 
 
@@ -202,11 +202,11 @@ This helped make the application more suitable for deployment in a memory-constr
 
 
 
-\---
+---
 
 
 
-\## Technologies Used
+## Technologies Used
 
 
 
@@ -238,11 +238,11 @@ This helped make the application more suitable for deployment in a memory-constr
 
 
 
-\---
+---
 
 
 
-\## Project Structure
+## Project Structure
 
 
 
@@ -258,17 +258,17 @@ ieee-cis-fraud-detection/
 
 │
 
-├── xgb\_model.pkl
+├── xgb_model.pkl
 
-├── freq\_maps.pkl
+├── freq_maps.pkl
 
-├── compact\_agg\_maps.pkl
+├── compact_agg_maps.pkl
 
 ├── encoders.pkl
 
-├── feature\_colum.pkl
+├── feature_colum.pkl
 
-├── feature\_dtype.pkl
+├── feature_dtype.pkl
 
 │
 
@@ -280,7 +280,7 @@ ieee-cis-fraud-detection/
 
 ├── tests/
 
-│ └── test\_api.py
+│ └── test_api.py
 
 │
 
@@ -308,15 +308,15 @@ ieee-cis-fraud-detection/
 
 
 
-\---
+---
 
 
 
-\## Running the Application Locally
+## Running the Application Locally
 
 
 
-\### 1. Clone the Repository
+### 1. Clone the Repository
 
 
 
@@ -328,7 +328,7 @@ git clone https://github.com/ugwuanyi-timothy/ieee-cis-fraud-detection.git
 
 
 
-\### 2. Navigate into the Project Directory
+### 2. Navigate into the Project Directory
 
 
 
@@ -340,7 +340,7 @@ cd ieee-cis-fraud-detection
 
 
 
-\### 3. Create a Virtual Environment
+### 3. Create a Virtual Environment
 
 
 
@@ -352,7 +352,7 @@ python -m venv venv
 
 
 
-\### 4. Activate the Virtual Environment
+### 4. Activate the Virtual Environment
 
 
 
@@ -368,7 +368,7 @@ venv\\Scripts\\activate
 
 
 
-\### 5. Install Dependencies
+### 5. Install Dependencies
 
 
 
@@ -380,7 +380,7 @@ python -m pip install -r requirements.txt
 
 
 
-\### 6. Start the Application
+### 6. Start the Application
 
 
 
@@ -416,11 +416,11 @@ http://127.0.0.1:8000/docs
 
 
 
-\---
+---
 
 
 
-\## API Usage
+## API Usage
 
 
 
@@ -428,7 +428,7 @@ The application exposes a prediction endpoint:
 
 
 
-\*\*Endpoint:\*\* `POST /predict`
+**Endpoint:** `POST /predict`
 
 
 
@@ -436,7 +436,7 @@ The endpoint accepts transaction data and returns a fraud prediction.
 
 
 
-\### Example Response
+### Example Response
 
 
 
@@ -444,7 +444,7 @@ The endpoint accepts transaction data and returns a fraud prediction.
 
 {
 
-&#x20;   "fraud\_probability": 0.6763,
+&#x20;   "fraud_probability": 0.6763,
 
 &#x20;   "prediction": 1,
 
@@ -456,7 +456,7 @@ The endpoint accepts transaction data and returns a fraud prediction.
 
 
 
-\### Prediction Interpretation
+### Prediction Interpretation
 
 
 
@@ -474,11 +474,11 @@ The fraud probability represents the model's estimated probability of fraud. It 
 
 
 
-\---
+---
 
 
 
-\## Testing
+## Testing
 
 
 
@@ -486,7 +486,7 @@ Automated tests were implemented using pytest to verify the API's behaviour.
 
 
 
-\### Install Development Dependencies
+### Install Development Dependencies
 
 
 
@@ -498,7 +498,7 @@ python -m pip install -r requirements-dev.txt
 
 
 
-\### Run the Tests
+### Run the Tests
 
 
 
@@ -510,7 +510,7 @@ pytest -v
 
 
 
-\*\*Test Result: 5 tests passed.\*\*
+**Test Result: 5 tests passed.**
 
 
 
@@ -522,11 +522,11 @@ The application was also manually tested using legitimate and fraudulent transac
 
 
 
-\---
+---
 
 
 
-\## Dataset
+## Dataset
 
 
 
@@ -534,7 +534,7 @@ The project uses the IEEE-CIS Fraud Detection dataset.
 
 
 
-\*\*Dataset Source:\*\*
+**Dataset Source:**
 
 
 
@@ -546,11 +546,11 @@ The dataset contains transaction and identity information used to develop machin
 
 
 
-\---
+---
 
 
 
-\## Limitations and Future Improvements
+## Limitations and Future Improvements
 
 
 
@@ -558,25 +558,25 @@ Potential areas for further development include:
 
 
 
-\- Integration with a real-time transaction processing system.
+- Integration with a real-time transaction processing system.
 
-\- Monitoring model performance after deployment.
+- Monitoring model performance after deployment.
 
-\- Improving model explainability.
+- Improving model explainability.
 
-\- Adding more comprehensive input validation.
+- Adding more comprehensive input validation.
 
-\- Exploring additional fraud detection techniques.
+- Exploring additional fraud detection techniques.
 
-\- Implementing authentication and access control.
-
-
-
-\---
+- Implementing authentication and access control.
 
 
 
-\## Disclaimer
+---
+
+
+
+## Disclaimer
 
 
 
