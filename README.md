@@ -1,74 +1,62 @@
-IEEE-CIS Fraud Detection System
+\# IEEE-CIS Fraud Detection System
 
 
 
-An end-to-end machine learning application for detecting potentially
-
-&#x20;
-
-fraudulent financial transactions using XGBoost, FastAPI, and a
+An end-to-end machine learning application for detecting potentially fraudulent financial transactions using \*\*XGBoost\*\*, \*\*FastAPI\*\*, and a web-based frontend.
 
 
 
-web-based frontend.
+\## Live Application
 
 
 
-Project Overview
+\- \*\*Live Demo:\*\* https://ieee-cis-fraud-detection-1.onrender.com
+
+\- \*\*GitHub Repository:\*\* https://github.com/ugwuanyi-timothy/ieee-cis-fraud-detection
 
 
 
-This project uses a trained XGBoost classifier to estimate the probability
+\---
 
 
 
-&#x20;that a financial transaction is fraudulent.
+\## Project Overview
 
 
 
-The application provides a web interface where users can submit transaction
+Financial fraud detection is a challenging classification problem. Fraudulent transactions are relatively uncommon, and identifying suspicious patterns requires effective data preprocessing, feature engineering, and machine learning techniques.
 
 
 
-&#x20;data and receive a prediction, fraud probability, and transaction classification.
+For this project, I developed a machine learning solution using the IEEE-CIS Fraud Detection dataset from Kaggle.
 
 
 
-Application Features
+The goal was not just to train a model, but to build an application that can accept transaction data, process it using the same preprocessing pipeline used during model development, and return a prediction.
 
 
 
-\- Fraud detection using a trained XGBoost model.
-
-\- Transaction preprocessing and feature engineering.
-
-\- Frequency encoding and aggregation-based features.
-
-\- REST API developed with FastAPI.
-
-\- Interactive web frontend.
-
-\- Fraud probability estimation.
-
-\- Fraudulent and legitimate transaction classification.
-
-\- Input validation and error handling.
+The final application uses a trained \*\*XGBoost classifier\*\* to estimate the probability that a transaction is fraudulent and classify it as either potentially fraudulent or legitimate.
 
 
 
-Application screenshots
+\---
 
 
 
-Home page
+\## Application Screenshots
 
 
 
-!\[Home page](screenshots/home.png)
+\### 1. Home Page
 
 
 
-Legitimate Transaction
+!\[Application Home Page](screenshots/home.png)
+
+
+
+\### 2. Legitimate Transaction
 
 
 
@@ -76,7 +64,7 @@ Legitimate Transaction
 
 
 
-Fraud Transaction
+\### 3. Fraudulent Transaction
 
 
 
@@ -84,39 +72,203 @@ Fraud Transaction
 
 
 
-Technologies Used
+\---
 
 
 
-\- Python
-
-\- Pandas
-
-\- NumPy
-
-\- Scikit-learn
-
-\- XGBoost
-
-\- FastAPI
-
-\- Uvicorn
-
-\- Joblib
-
-\- HTML
-
-\- CSS
-
-\- JavaScript
+\## Key Features
 
 
 
-Project Structure
+\- Machine learning-based fraud detection using XGBoost.
+
+\- Fraud probability estimation.
+
+\- Classification of transactions as legitimate or potentially fraudulent.
+
+\- FastAPI backend for handling prediction requests.
+
+\- Web-based frontend for submitting transaction data.
+
+\- Feature engineering and categorical encoding.
+
+\- Optimized aggregation mappings for deployment.
+
+\- CPU-only XGBoost deployment to reduce unnecessary memory requirements.
+
+\- Automated API testing using pytest.
 
 
+
+\---
+
+
+
+\## Model Performance
+
+
+
+The model was evaluated using the Kaggle IEEE-CIS Fraud Detection competition leaderboard.
+
+
+
+| Evaluation | ROC-AUC Score |
+
+|:---|---:|
+
+| Public Leaderboard | 0.9406 |
+
+| Private Leaderboard | 0.9225 |
+
+| Local score | 0.9290 |
+
+
+
+The private leaderboard score provides an indication of how the model performed on the competition's hidden evaluation data.
+
+
+
+\---
+
+
+
+\## Feature Engineering and Preprocessing
+
+
+
+During experimentation, I worked on feature engineering, categorical encoding, aggregation features, and model configuration to improve the model's predictive performance.
+
+
+
+The preprocessing pipeline includes:
+
+
+
+\- Frequency encoding of selected categorical features.
+
+\- Aggregation features based on transaction-related identifiers.
+
+\- Combination features involving card, address, and email information.
+
+\- Label encoding of categorical variables.
+
+\- Alignment of processed data with the model's expected feature columns.
+
+
+
+The final model expects \*\*357 input features\*\*.
+
+
+
+\### Aggregation Map Optimization
+
+
+
+One of the engineering challenges was reducing the memory and storage overhead associated with the aggregation mappings used during preprocessing.
+
+
+
+The original aggregation mappings were converted into a compact representation while preserving their aggregation values.
+
+
+
+| Version | File Size |
+
+|:---|---:|
+
+| Original aggregation mappings | 42.27 MiB |
+
+| Compact aggregation mappings | 3.03 MiB |
+
+
+
+This reduced the serialized aggregation artifact by approximately \*\*92.8%\*\*.
+
+
+
+The compact mappings were compared against the original mappings to verify that they produced identical aggregation values.
+
+
+
+\### Deployment Optimization
+
+
+
+I also switched to the CPU-only XGBoost package for deployment to avoid unnecessary GPU-related dependencies and reduce installation overhead.
+
+
+
+This helped make the application more suitable for deployment in a memory-constrained hosting environment.
+
+
+
+\---
+
+
+
+\## Technologies Used
+
+
+
+| Technology | Purpose |
+
+|:---|:---|
+
+| Python | Main programming language |
+
+| Pandas | Data manipulation |
+
+| NumPy | Numerical operations |
+
+| Scikit-learn | Data preprocessing |
+
+| XGBoost | Machine learning model |
+
+| FastAPI | Backend API |
+
+| Uvicorn | ASGI server |
+
+| HTML/CSS/JavaScript | Frontend development |
+
+| Pytest | Automated testing |
+
+| Git and GitHub | Version control |
+
+| Render | Application deployment |
+
+
+
+\---
+
+
+
+\## Project Structure
+
+
+
+```text
 
 ieee-cis-fraud-detection/
+
+│
+
+├── main.py
+
+├── preprocessing.py
+
+│
+
+├── xgb\_model.pkl
+
+├── freq\_maps.pkl
+
+├── compact\_agg\_maps.pkl
+
+├── encoders.pkl
+
+├── feature\_colum.pkl
+
+├── feature\_dtype.pkl
 
 │
 
@@ -132,173 +284,163 @@ ieee-cis-fraud-detection/
 
 │
 
-├── main.py
+├── screenshots/
 
-├── preprocessing.py
+│ ├── home.png
 
-├── requirements.txt
+│ ├── legitimate-transaction.png
 
-├── README.md
+│ └── fraudulent-transaction.png
 
 │
 
-├── xgb\_model.pkl
+├── requirements.txt
 
-├── freq\_maps.pkl
+├── requirements-dev.txt
 
-├── agg\_maps.pkl
+├── .python-version
 
-├── encoders.pkl
+├── .gitignore
 
-├── feature\_colum.pkl
+└── README.md
 
-└── feature\_dtype.pkl
-
-
-
-Installation and Setup
+```
 
 
 
-1\. Clone the repository
+\---
 
 
+
+\## Running the Application Locally
+
+
+
+\### 1. Clone the Repository
+
+
+
+```bash
 
 git clone https://github.com/ugwuanyi-timothy/ieee-cis-fraud-detection.git
 
+```
 
 
-2\. Navigate into the project directory
+
+\### 2. Navigate into the Project Directory
 
 
+
+```bash
 
 cd ieee-cis-fraud-detection
 
+```
 
 
-3\. Create and activate a virtual environment
+
+\### 3. Create a Virtual Environment
 
 
+
+```bash
 
 python -m venv venv
 
+```
 
 
-Windows:
+
+\### 4. Activate the Virtual Environment
 
 
+
+On Windows:
+
+
+
+```bash
 
 venv\\Scripts\\activate
 
+```
 
 
-4\. Install application dependencies
 
+\### 5. Install Dependencies
 
 
-pip install -r requirements.txt
 
+```bash
 
+python -m pip install -r requirements.txt
 
-5\. Install development and testing dependencies
+```
 
 
 
-pip install -r requirements-dev.txt
+\### 6. Start the Application
 
 
 
-Running the Application
+```bash
 
+uvicorn main:app --reload
 
+```
 
-Start the FastAPI server:
 
 
+Open the following address in your browser:
 
-python -m uvicorn main:app --host 127.0.0.1 --port 8014
 
 
+```text
 
-Open the application in your browser:
+http://127.0.0.1:8000
 
+```
 
 
-http://127.0.0.1:8014/
 
+The API documentation is available at:
 
 
-API documentation is available at:
 
+```text
 
+http://127.0.0.1:8000/docs
 
-http://127.0.0.1:8014/docs
+```
 
 
 
-Running Automated Tests
+\---
 
 
 
-Run the test suite from the project root directory:
+\## API Usage
 
 
 
-python -m pytest -v
+The application exposes a prediction endpoint:
 
 
 
-The tests cover:
+\*\*Endpoint:\*\* `POST /predict`
 
 
 
-\- Empty transaction validation.
+The endpoint accepts transaction data and returns a fraud prediction.
 
-\- Missing required fields.
 
-\- Invalid transaction data.
 
-\- Legitimate transaction classification.
+\### Example Response
 
-\- Fraudulent transaction classification.
 
 
-
-The prediction tests use mocked model outputs to test
-
-&#x20;API behaviour without requiring access to real
-
-&#x20;transaction records.
-
-
-
-API Documentation
-
-
-
-Interactive API documentation is available at:
-
-
-
-http://127.0.0.1:8014/docs
-
-
-
-Prediction Endpoint
-
-
-
-POST "/predict"
-
-
-
-The endpoint accepts transaction data in JSON format and returns a prediction.
-
-
-
-Example Response
-
-
+```json
 
 {
 
@@ -310,67 +452,136 @@ Example Response
 
 }
 
-
-
-Prediction Labels
-
-
-
-Prediction| Meaning
-
-0| Legitimate transaction
-
-1| Fraudulent transaction
+```
 
 
 
-The fraud probability represents the model's estimated probability of fraud,
+\### Prediction Interpretation
 
 
 
-&#x20;not a guarantee that a transaction is fraudulent.
+| Prediction | Meaning |
+
+|:---:|:---|
+
+| 0 | Legitimate transaction |
+
+| 1 | Potentially fraudulent transaction |
 
 
 
-Dataset
+The fraud probability represents the model's estimated probability of fraud. It should not be interpreted as a definitive determination that a transaction is fraudulent.
 
 
 
-This project is based on the "IEEE-CIS Fraud Detection dataset"
+\---
 
 
 
-(https://www.kaggle.com/competitions/ieee-fraud-detection) hosted on Kaggle.
+\## Testing
 
 
 
-The original dataset is not included in this repository.
+Automated tests were implemented using pytest to verify the API's behaviour.
 
 
 
-Model Evaluation
+\### Install Development Dependencies
 
 
 
-Model performance was evaluated during the Kaggle competition using the ROC-AUC metric.
+```bash
+
+python -m pip install -r requirements-dev.txt
+
+```
 
 
 
-Detailed evaluation results and methodology will be documented alongside
+\### Run the Tests
 
 
 
-&#x20;the model evaluation materials.
+```bash
+
+pytest -v
+
+```
 
 
 
-Disclaimer
+\*\*Test Result: 5 tests passed.\*\*
 
 
 
-This project is intended for educational, research, and demonstration purposes.
+The automated API tests use mocked model outputs to verify API behaviour. They are not a substitute for evaluating the model on real transaction data.
 
 
 
-&#x20;Predictions should not be used as the sole basis for real-world financial decisions.
+The application was also manually tested using legitimate and fraudulent transaction examples. The deployed application returned results consistent with the local application.
 
+
+
+\---
+
+
+
+\## Dataset
+
+
+
+The project uses the IEEE-CIS Fraud Detection dataset.
+
+
+
+\*\*Dataset Source:\*\*
+
+
+
+https://www.kaggle.com/competitions/ieee-fraud-detection
+
+
+
+The dataset contains transaction and identity information used to develop machine learning models for detecting fraudulent financial transactions.
+
+
+
+\---
+
+
+
+\## Limitations and Future Improvements
+
+
+
+Potential areas for further development include:
+
+
+
+\- Integration with a real-time transaction processing system.
+
+\- Monitoring model performance after deployment.
+
+\- Improving model explainability.
+
+\- Adding more comprehensive input validation.
+
+\- Exploring additional fraud detection techniques.
+
+\- Implementing authentication and access control.
+
+
+
+\---
+
+
+
+\## Disclaimer
+
+
+
+This project was developed for educational and portfolio demonstration purposes.
+
+
+
+The predictions are generated by a machine learning model and should not be used as the sole basis for real-world financial decisions.
